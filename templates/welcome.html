@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+    <title>Subramanya's Portfolio Project</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div>
+    <h1>Welcome to your Application</h1>
+    <p>Clicking on the button below will redirect you to Auth0's Sign In page. Here you will be asked to
+        Log In to your account or create a new account. Upon successful Log In, you will be redirected back to a
+        page where the JWT token issued by Auth0 and an unique user id will be displayed.
+    </p>
+    <button onclick="window.location.href='/login';">LogIn</button>
+</div>
+
+</body>
+</html>

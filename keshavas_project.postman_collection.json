@@ -1,0 +1,2935 @@
+{
+	"info": {
+		"_postman_id": "6cafe491-40e6-4fc0-9509-284513d267ab",
+		"name": "keshavas_project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add car",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.environment.set(\"car_id\", pm.response.json()[\"id\"]);",
+							"",
+							"pm.test(\"content is valid\", function () {",
+							"   pm.expect(pm.response.json()[\"name\"]).to.eq(\"Volvo\");",
+							"   pm.expect(pm.response.json()[\"model\"]).to.eq(\"XC90\");",
+							"   pm.expect(pm.response.json()[\"reg_num\"]).to.eq(\"OR8923\");",
+							"   pm.expect(pm.response.json()[\"color\"]).to.eq(\"white\");",
+							"",
+							"   //Check if the self url is correct",
+							"   console.log(pm.environment.get(\"app_url\"))",
+							"   const self_url = pm.environment.get(\"app_url\") + \"/cars/\" + pm.response.json()[\"id\"];",
+							"   console.log(self_url)",
+							"   pm.expect(pm.response.json()[\"self\"]).to.eq(self_url);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Volvo\",\n    \"model\": \"XC90\",\n    \"reg_num\": \"OR8923\",\n    \"color\": \"white\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add car 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.environment.set(\"car_id_2\", pm.response.json()[\"id\"]);",
+							"",
+							"pm.test(\"content is valid\", function () {",
+							"   pm.expect(pm.response.json()[\"name\"]).to.eq(\"Jeep\");",
+							"   pm.expect(pm.response.json()[\"model\"]).to.eq(\"Gladiator\");",
+							"   pm.expect(pm.response.json()[\"reg_num\"]).to.eq(\"OR1723\");",
+							"   pm.expect(pm.response.json()[\"color\"]).to.eq(\"mojave\");",
+							"",
+							"   //Check if the self url is correct",
+							"   console.log(pm.environment.get(\"app_url\"))",
+							"   const self_url = pm.environment.get(\"app_url\") + \"/cars/\" + pm.response.json()[\"id\"];",
+							"   console.log(self_url)",
+							"   pm.expect(pm.response.json()[\"self\"]).to.eq(self_url);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Jeep\",\n    \"model\": \"Gladiator\",\n    \"reg_num\": \"OR1723\",\n    \"color\": \"mojave\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add car 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.environment.set(\"car_id_3\", pm.response.json()[\"id\"]);",
+							"",
+							"pm.test(\"content is valid\", function () {",
+							"   pm.expect(pm.response.json()[\"name\"]).to.eq(\"Ford\");",
+							"   pm.expect(pm.response.json()[\"model\"]).to.eq(\"Raptor\");",
+							"   pm.expect(pm.response.json()[\"reg_num\"]).to.eq(\"OR2223\");",
+							"   pm.expect(pm.response.json()[\"color\"]).to.eq(\"velocity blue\");",
+							"",
+							"   //Check if the self url is correct",
+							"   console.log(pm.environment.get(\"app_url\"))",
+							"   const self_url = pm.environment.get(\"app_url\") + \"/cars/\" + pm.response.json()[\"id\"];",
+							"   console.log(self_url)",
+							"   pm.expect(pm.response.json()[\"self\"]).to.eq(self_url);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Ford\",\n    \"model\": \"Raptor\",\n    \"reg_num\": \"OR2223\",\n    \"color\": \"velocity blue\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add car - jwt2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.environment.set(\"car_id_jwt2\", pm.response.json()[\"id\"]);",
+							"",
+							"pm.test(\"content is valid\", function () {",
+							"   pm.expect(pm.response.json()[\"name\"]).to.eq(\"Porsche\");",
+							"   pm.expect(pm.response.json()[\"model\"]).to.eq(\"Carrera\");",
+							"   pm.expect(pm.response.json()[\"reg_num\"]).to.eq(\"OR3223\");",
+							"   pm.expect(pm.response.json()[\"color\"]).to.eq(\"guard's red\");",
+							"",
+							"   //Check if the self url is correct",
+							"   console.log(pm.environment.get(\"app_url\"))",
+							"   const self_url = pm.environment.get(\"app_url\") + \"/cars/\" + pm.response.json()[\"id\"];",
+							"   console.log(self_url)",
+							"   pm.expect(pm.response.json()[\"self\"]).to.eq(self_url);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Porsche\",\n    \"model\": \"Carrera\",\n    \"reg_num\": \"OR3223\",\n    \"color\": \"guard's red\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add car with an invalid/expired token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"401 status code\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"401 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"description\"]).to.eq(\"Invalid header. Use an RS256 signed JWT Access Token\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{invalid_authorization_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Volvo\",\n    \"model\": \"XC90\",\n    \"reg_num\": \"OR8923\",\n    \"color\": \"white\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add car with missing attributes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"400 status code\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"400 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"Error\"]).to.eq(\"The request object is missing at least one of the required attributes\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"model\": \"XC90\",\n    \"reg_num\": \"OR8923\",\n    \"color\": \"white\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add car with an invalid name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"400 status code\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"400 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"Error\"]).to.eq(\"The attribute 'name' is not valid\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": 123,\n    \"model\": \"XC90\",\n    \"reg_num\": \"OR8923\",\n    \"color\": \"white\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add car with an existing name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							"",
+							"pm.test(\"403 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"Error\"]).to.eq(\"A car with name Volvo already exists\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Volvo\",\n    \"model\": \"XC90\",\n    \"reg_num\": \"OR8923\",\n    \"color\": \"white\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cars",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content type is application/json\", function() {",
+							"    content_type = pm.response.headers.get(\"Content-Type\");",
+							"    pm.expect(content_type).to.eq(\"application/json\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response is not empty\", function () {",
+							"    pm.expect(pm.response.json()[\"cars\"]).not.empty",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cars with an invalid/expired token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"401 status code\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"",
+							"pm.test(\"401 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"description\"]).to.eq(\"Invalid header. Use an RS256 signed JWT Access Token\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{invalid_authorization_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cars with no accept header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"406 status code\", function () {",
+							"    pm.response.to.have.status(406);",
+							"});",
+							"",
+							"pm.test(\"406 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"Error\"]).to.eq(\"Accept header */* is not supported. Valid accept header is: application/json\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get car by car id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content type is application/json\", function() {",
+							"    content_type = pm.response.headers.get(\"Content-Type\");",
+							"    pm.expect(content_type).to.eq(\"application/json\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get car by car 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content type is application/json\", function() {",
+							"    content_type = pm.response.headers.get(\"Content-Type\");",
+							"    pm.expect(content_type).to.eq(\"application/json\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get car by car 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content type is application/json\", function() {",
+							"    content_type = pm.response.headers.get(\"Content-Type\");",
+							"    pm.expect(content_type).to.eq(\"application/json\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id_3}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id_3}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get car by car - jwt2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content type is application/json\", function() {",
+							"    content_type = pm.response.headers.get(\"Content-Type\");",
+							"    pm.expect(content_type).to.eq(\"application/json\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id_jwt2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id_jwt2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get car with invalid car id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"404 status code\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"404 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"Error\"]).to.eq(\"No car with this car_id exists\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/cars/{{invalid_car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{invalid_car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get car with an invalid token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							"",
+							"pm.test(\"403 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"Error\"]).to.eq(\"Invalid user. The car_id belongs to a different user\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update car",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"content is valid\", function () {",
+							"   pm.expect(pm.response.json()[\"name\"]).to.eq(\"Volvo\");",
+							"   pm.expect(pm.response.json()[\"model\"]).to.eq(\"XC90\");",
+							"   pm.expect(pm.response.json()[\"reg_num\"]).to.eq(\"CA8923\");",
+							"   pm.expect(pm.response.json()[\"color\"]).to.eq(\"red\");",
+							"",
+							"   //Check if the self url is correct",
+							"   console.log(pm.environment.get(\"app_url\"))",
+							"   const self_url = pm.environment.get(\"app_url\") + \"/cars/\" + pm.response.json()[\"id\"];",
+							"   console.log(self_url)",
+							"   pm.expect(pm.response.json()[\"self\"]).to.eq(self_url);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Volvo\",\n    \"model\": \"XC90\",\n    \"reg_num\": \"CA8923\",\n    \"color\": \"red\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update car wtih an invalid token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							"",
+							"pm.test(\"403 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"Error\"]).to.eq(\"Invalid user. The car_id belongs to a different user\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Volvo\",\n    \"model\": \"XC90\",\n    \"reg_num\": \"CA8923\",\n    \"color\": \"red\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update car with an invalid car id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"404 status code\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"404 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"Error\"]).to.eq(\"No car with this car_id exists\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Volvo\",\n    \"model\": \"XC90\",\n    \"reg_num\": \"CA8923\",\n    \"color\": \"red\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/cars/{{invalid_car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{invalid_car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update partial car",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"content is valid\", function () {",
+							"   pm.expect(pm.response.json()[\"name\"]).to.eq(\"Volvo\");",
+							"   pm.expect(pm.response.json()[\"model\"]).to.eq(\"XC90 New\");",
+							"   pm.expect(pm.response.json()[\"reg_num\"]).to.eq(\"CA8923\");",
+							"   pm.expect(pm.response.json()[\"color\"]).to.eq(\"yellow\");",
+							"",
+							"   //Check if the self url is correct",
+							"   console.log(pm.environment.get(\"app_url\"))",
+							"   const self_url = pm.environment.get(\"app_url\") + \"/cars/\" + pm.response.json()[\"id\"];",
+							"   console.log(self_url)",
+							"   pm.expect(pm.response.json()[\"self\"]).to.eq(self_url);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"model\": \"XC90 New\",\n    \"reg_num\": \"CA8923\",\n    \"color\": \"yellow\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update partial car with an invalid token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});",
+							"",
+							"pm.test(\"403 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"Error\"]).to.eq(\"Invalid user. The car_id belongs to a different user\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"model\": \"XC90 New\",\n    \"reg_num\": \"CA8923\",\n    \"color\": \"yellow\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update partial car with an invalid car id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"404 status code\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"404 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"Error\"]).to.eq(\"No car with this car_id exists\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"model\": \"XC90 New\",\n    \"reg_num\": \"CA8923\",\n    \"color\": \"yellow\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/cars/{{invalid_car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{invalid_car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update partial car with all attributes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"400 status code\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"400 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"Error\"]).to.eq(\"Bad HTTP method. PATCH cannot update all attributes, please use PUT operation.\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Volvo\",\n    \"model\": \"XC90 New\",\n    \"reg_num\": \"CA8923\",\n    \"color\": \"yellow\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add spare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.environment.set(\"spare_id\", pm.response.json()[\"id\"]);",
+							"",
+							"pm.test(\"content is valid\", function () {",
+							"   pm.expect(pm.response.json()[\"name\"]).to.eq(\"Tyre\");",
+							"   pm.expect(pm.response.json()[\"price\"]).to.eq(50.49);",
+							"   pm.expect(pm.response.json()[\"serial_num\"]).to.eq(1000000000);",
+							"",
+							"   //Check if the self url is correct",
+							"   console.log(pm.environment.get(\"app_url\"))",
+							"   const self_url = pm.environment.get(\"app_url\") + \"/spares/\" + pm.response.json()[\"id\"];",
+							"   console.log(self_url)",
+							"   pm.expect(pm.response.json()[\"self\"]).to.eq(self_url);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Tyre\",\n    \"price\": 50.49,\n    \"serial_num\": 1000000000\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/spares",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add spare 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.environment.set(\"spare_id_2\", pm.response.json()[\"id\"]);",
+							"",
+							"pm.test(\"content is valid\", function () {",
+							"   pm.expect(pm.response.json()[\"name\"]).to.eq(\"Wiper\");",
+							"   pm.expect(pm.response.json()[\"price\"]).to.eq(14.99);",
+							"   pm.expect(pm.response.json()[\"serial_num\"]).to.eq(1000000020);",
+							"",
+							"   //Check if the self url is correct",
+							"   console.log(pm.environment.get(\"app_url\"))",
+							"   const self_url = pm.environment.get(\"app_url\") + \"/spares/\" + pm.response.json()[\"id\"];",
+							"   console.log(self_url)",
+							"   pm.expect(pm.response.json()[\"self\"]).to.eq(self_url);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Wiper\",\n    \"price\": 14.99,\n    \"serial_num\": 1000000020\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/spares",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add spare 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 status code\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.environment.set(\"spare_id_3\", pm.response.json()[\"id\"]);",
+							"",
+							"pm.test(\"content is valid\", function () {",
+							"   pm.expect(pm.response.json()[\"name\"]).to.eq(\"RVM\");",
+							"   pm.expect(pm.response.json()[\"price\"]).to.eq(9.99);",
+							"   pm.expect(pm.response.json()[\"serial_num\"]).to.eq(1000000030);",
+							"",
+							"   //Check if the self url is correct",
+							"   console.log(pm.environment.get(\"app_url\"))",
+							"   const self_url = pm.environment.get(\"app_url\") + \"/spares/\" + pm.response.json()[\"id\"];",
+							"   console.log(self_url)",
+							"   pm.expect(pm.response.json()[\"self\"]).to.eq(self_url);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"RVM\",\n    \"price\": 9.99,\n    \"serial_num\": 1000000030\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/spares",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add spare with missing attributes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"400 status code\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"400 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"Error\"]).to.eq(\"The request object is missing at least one of the required attributes\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Tyre\",\n    \"serial_num\": 1000000000\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/spares",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get spares",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content type is application/json\", function() {",
+							"    content_type = pm.response.headers.get(\"Content-Type\");",
+							"    pm.expect(content_type).to.eq(\"application/json\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response is not empty\", function () {",
+							"    pm.expect(pm.response.json()[\"spares\"]).not.empty",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/spares",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get spares with no accept header",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"406 status code\", function () {",
+							"    pm.response.to.have.status(406);",
+							"});",
+							"",
+							"pm.test(\"406 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"Error\"]).to.eq(\"Accept header */* is not supported. Valid accept header is: application/json\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/spares",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get spare by spare id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content type is application/json\", function() {",
+							"    content_type = pm.response.headers.get(\"Content-Type\");",
+							"    pm.expect(content_type).to.eq(\"application/json\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get spare by spare id 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content type is application/json\", function() {",
+							"    content_type = pm.response.headers.get(\"Content-Type\");",
+							"    pm.expect(content_type).to.eq(\"application/json\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/spares/{{spare_id_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{spare_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get spare by spare id 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content type is application/json\", function() {",
+							"    content_type = pm.response.headers.get(\"Content-Type\");",
+							"    pm.expect(content_type).to.eq(\"application/json\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/spares/{{spare_id_3}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{spare_id_3}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get spare with an invalid spare id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"404 status code\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"404 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"Error\"]).to.eq(\"No spare with this spare_id exists\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/spares/{{invalid_spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{invalid_spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update spare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"content is valid\", function () {",
+							"   pm.expect(pm.response.json()[\"id\"]).to.eq(pm.environment.get(\"spare_id\"))",
+							"   pm.expect(pm.response.json()[\"name\"]).to.eq(\"Tyre New\");",
+							"   pm.expect(pm.response.json()[\"price\"]).to.eq(50.49);",
+							"   pm.expect(pm.response.json()[\"serial_num\"]).to.eq(1000000000);",
+							"",
+							"   //Check if the self url is correct",
+							"   console.log(pm.environment.get(\"app_url\"))",
+							"   const self_url = pm.environment.get(\"app_url\") + \"/spares/\" + pm.response.json()[\"id\"];",
+							"   console.log(self_url)",
+							"   pm.expect(pm.response.json()[\"self\"]).to.eq(self_url);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Tyre New\",\n    \"price\": 50.49,\n    \"serial_num\": 1000000000\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update spare with an invalid spare id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"404 status code\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"404 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"Error\"]).to.eq(\"No spare with this spare_id exists\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Tyre New\",\n    \"price\": 50.49,\n    \"serial_num\": 1000000000\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/spares/{{invalid_spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{invalid_spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update partial spare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"content is valid\", function () {",
+							"   pm.expect(pm.response.json()[\"id\"]).to.eq(pm.environment.get(\"spare_id\"))",
+							"   pm.expect(pm.response.json()[\"name\"]).to.eq(\"Tyre New\");",
+							"   pm.expect(pm.response.json()[\"price\"]).to.eq(49.99);",
+							"   pm.expect(pm.response.json()[\"serial_num\"]).to.eq(1000000000);",
+							"",
+							"   //Check if the self url is correct",
+							"   console.log(pm.environment.get(\"app_url\"))",
+							"   const self_url = pm.environment.get(\"app_url\") + \"/spares/\" + pm.response.json()[\"id\"];",
+							"   console.log(self_url)",
+							"   pm.expect(pm.response.json()[\"self\"]).to.eq(self_url);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"price\": 49.99,\n    \"serial_num\": 1000000000\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update partial spare with an invalid spare id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"404 status code\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"404 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"Error\"]).to.eq(\"No spare with this spare_id exists\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"price\": 49.99,\n    \"serial_num\": 1000000000\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/spares/{{invalid_spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{invalid_spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get car by car id before installing a spare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content type is application/json\", function() {",
+							"    content_type = pm.response.headers.get(\"Content-Type\");",
+							"    pm.expect(content_type).to.eq(\"application/json\");",
+							"});",
+							"",
+							"pm.test(\"No spares are installed in the car\", function () {",
+							"   pm.expect(pm.response.json()[\"spares\"]).empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "install spare in a car",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"204 status code\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}",
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get car by car id after installing a spare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content type is application/json\", function() {",
+							"    content_type = pm.response.headers.get(\"Content-Type\");",
+							"    pm.expect(content_type).to.eq(\"application/json\");",
+							"});",
+							"",
+							"pm.test(\"A spare is installed in the car\", function () {",
+							"   pm.expect(pm.response.json()[\"spares\"]).not.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "install spare 2 in car 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"204 status code\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id_2}}/spares/{{spare_id_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id_2}}",
+						"spares",
+						"{{spare_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "install spare 3 in car 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"204 status code\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id_3}}/spares/{{spare_id_3}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id_3}}",
+						"spares",
+						"{{spare_id_3}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "install spare with an invalid car id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"404 status code\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{invalid_car_id}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{invalid_car_id}}",
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "install spare with an invalid spare id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"404 status code\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}/spares/{{invalid_spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}",
+						"spares",
+						"{{invalid_spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "install spare assigned to a different car",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id_2}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id_2}}",
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove spare from a car",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"204 status code\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}",
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove spare with an invalid car id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"404 status code\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{invalid_car_id}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{invalid_car_id}}",
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove spare with an invalid spare id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"404 status code\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}/spares/{{invalid_spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}",
+						"spares",
+						"{{invalid_spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove spare which is not installed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}/spares/{{spare_id_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}",
+						"spares",
+						"{{spare_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete spare",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"204 status code\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete spare 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"204 status code\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/spares/{{spare_id_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{spare_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete spare 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"204 status code\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/spares/{{spare_id_3}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{spare_id_3}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete spare with an invalid spare id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"404 status code\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"404 error message\", function () {",
+							"     pm.expect(pm.response.json()[\"Error\"]).to.eq(\"No spare with this spare_id exists\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/spares/{{invalid_spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{invalid_spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete car",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"204 status code\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete car with an invalid token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"403 status code\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete car 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"204 status code\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id_2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete car 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"204 status code\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id_3}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id_3}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete car - jwt2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"204 status code\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt2}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id_jwt2}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id_jwt2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete car with an invalid car id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"404 status code\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{invalid_car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{invalid_car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "405 error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"405 status code\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Users are present\", function () {",
+							"   pm.expect(pm.response.json()).not.empty;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/users",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

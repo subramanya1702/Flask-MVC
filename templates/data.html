@@ -1,0 +1,18 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Subramanya's Portfolio Project</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h3>Your Authorization token is:</h3>
+<p>{{ token }}</p>
+<br>
+<h3> Your Id is:</h3>
+<p>{{ userId }}</p>
+<a href="#" class="previous" onclick="window.location='/logout';">Logout</a>
+
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+body {
+  font-family: "helvetica", sans-serif;
+}
+
+div {
+  margin: auto;
+  width: 550px;
+  text-align: center;
+}
+
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
