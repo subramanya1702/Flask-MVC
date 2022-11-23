@@ -1,0 +1,1236 @@
+{
+	"info": {
+		"_postman_id": "6cafe491-40e6-4fc0-9509-284513d267ab",
+		"name": "keshavas_project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add car",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Volvo\",\n    \"model\": \"XC90\",\n    \"reg_num\": \"OR8923\",\n    \"color\": \"white\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add car with an invalid/expired token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{invalid_authorization_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Volvo\",\n    \"model\": \"XC90\",\n    \"reg_num\": \"OR8923\",\n    \"color\": \"white\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add car with no token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Volvo\",\n    \"model\": \"XC90\",\n    \"reg_num\": \"OR8923\",\n    \"color\": \"white\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add car with missing attributes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"model\": \"XC90\",\n    \"reg_num\": \"OR8923\",\n    \"color\": \"white\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add car with an invalid name",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": 123,\n    \"model\": \"XC90\",\n    \"reg_num\": \"OR8923\",\n    \"color\": \"white\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add car with an existing name",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Volvo\",\n    \"model\": \"XC90\",\n    \"reg_num\": \"OR8923\",\n    \"color\": \"white\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cars",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cars with an invalid/expired token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{invalid_authorization_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cars with no accept header",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get car by car id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get car with invalid car id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/cars/{{invalid_car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{invalid_car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get car with an invalid token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{invalid_authorization_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update car",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Volvo\",\n    \"model\": \"XC90\",\n    \"reg_num\": \"CA8923\",\n    \"color\": \"red\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update car wtih an invalid token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{invalid_authorization_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Volvo\",\n    \"model\": \"XC90\",\n    \"reg_num\": \"CA8923\",\n    \"color\": \"red\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update car with an invalid car id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Volvo\",\n    \"model\": \"XC90\",\n    \"reg_num\": \"CA8923\",\n    \"color\": \"red\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/cars/{{invalid_car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{invalid_car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update partial car",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"model\": \"XC90 New\",\n    \"reg_num\": \"CA8923\",\n    \"color\": \"yellow\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update partial car with an invalid token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{invalid_authorization_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"model\": \"XC90 New\",\n    \"reg_num\": \"CA8923\",\n    \"color\": \"yellow\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update partial car with an invalid car id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"model\": \"XC90 New\",\n    \"reg_num\": \"CA8923\",\n    \"color\": \"yellow\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/cars/{{invalid_car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{invalid_car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update partial car with all attributes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Volvo\",\n    \"model\": \"XC90 New\",\n    \"reg_num\": \"CA8923\",\n    \"color\": \"yellow\"\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete car",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete car with an invalid token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{invalid_authorization_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete car with an invalid car id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt1}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{invalid_car_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{invalid_car_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "install spare in a car",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}",
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "install spare with an invalid car id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{invalid_car_id}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{invalid_car_id}}",
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "install spare with an invalid spare id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}/spares/{{invalid_spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}",
+						"spares",
+						"{{invalid_spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "install spare assigned to a different car",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{different_car_id}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{different_car_id}}",
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove spare from a car",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}",
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove spare with an invalid car id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{invalid_car_id}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{invalid_car_id}}",
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove spare with an invalid spare id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}/spares/{{invalid_spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}",
+						"spares",
+						"{{invalid_spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove spare which is not installed",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/cars/{{car_id}}/spares/{{not_installed_spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"cars",
+						"{{car_id}}",
+						"spares",
+						"{{not_installed_spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add spare",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Tyre\",\n    \"price\": 50.49,\n    \"serial_num\": 1000000000\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add spare with missing attributes",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Tyre\",\n    \"serial_num\": 1000000000\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get spares",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/spares",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get spares with no accept header",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/spares",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get spare by spare id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get spare with an invalid spare id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{app_url}}/spares/{{invalid_spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{invalid_spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update spare",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Tyre New\",\n    \"price\": 50.49,\n    \"serial_num\": 1000000000\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update spare with an invalid spare id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Tyre New\",\n    \"price\": 50.49,\n    \"serial_num\": 1000000000\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/spares/{{invalid_spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{invalid_spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update partial spare",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"price\": 49.99,\n    \"serial_num\": 1000000000\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update partial spare with an invalid spare id",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"price\": 49.99,\n    \"serial_num\": 1000000000\n}"
+				},
+				"url": {
+					"raw": "{{app_url}}/spares/{{invalid_spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{invalid_spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete spare",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/spares/{{spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{spare_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete spare with an invalid spare id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{app_url}}/spares/{{invalid_spare_id}}",
+					"host": [
+						"{{app_url}}"
+					],
+					"path": [
+						"spares",
+						"{{invalid_spare_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
