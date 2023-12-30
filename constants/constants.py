@@ -1,8 +1,8 @@
 ALGORITHMS = ["RS256"]
-DOMAIN = "portfolio-keshavas.us.auth0.com"
-CLIENT_ID = "Ps2zh5iBStLlCAKoNkL2smEdAMQy50od"
-CLIENT_SECRET = "JatKLbn2cSPSWtLcfU4XMrRYBsV_Z218tQg_QZoBDIYNwCb4AHUuV-fK2g6oIuc9"
-SECRET_KEY = "8506b5a268cf82a80b7de19efc4289be0568a641ddd5fe47bfc8e442a4f49d7c"
+DOMAIN = "xyz.auth.com"
+CLIENT_ID = "client_id"
+CLIENT_SECRET = "client_secret"
+SECRET_KEY = "secret_key"
 
 content_type_error = "Content-Type not supported. Application only supports type application/json"
 missing_attributes_error = "The request object is missing at least one of the required attributes"
